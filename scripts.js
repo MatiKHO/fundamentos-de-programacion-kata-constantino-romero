@@ -44,23 +44,32 @@ function imprimePregunta(pregunta) {
 }
 
 function imprimeTitulo(pregunta) {
-  // Put your code here
+  return `<p>${pregunta.titulo}</p>`
 }
 
 function imprimeTodasLasRespuestas(pregunta) {
-  // Put your code here
+  let htmlRespuestas = "";
+
+  pregunta.respuesta.forEach(respuesta => {
+    htmlRespuestas += imprimeUnaRespuesta(respuesta);
+  });
+
+  return htmlRespuestas;
 }
 
 function imprimeUnaRespuesta(respuesta) {
-  // Put your code here
+  const label = imprimeLabel(respuesta);
+  const input = imprimeInput(respuesta);
+
+  return label + input;
 }
 
 function imprimeLabel(respuesta) {
-  // Put your code here
+  return `<label for="${respuesta.id}">${respuesta.label}</label>`
 }
 
 function imprimeInput(respuesta) {
-  // Put your code here
+  return `<input type="radio" name="${respuesta.name}" id="${respuesta.id}" value="${respuesta.value}"/>`
 }
 
 document.getElementById("contenedorPreguntas").innerHTML = imprimePregunta(pregunta);
